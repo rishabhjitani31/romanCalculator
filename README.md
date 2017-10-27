@@ -4,9 +4,9 @@ divide multiply addition and subtraction
 
 files
 ======================================================================
-romanCalculator.html - html file which will display roman calculator in the browser
-qunitTest.html - html file for performing the unit test of the function and containing test cases
-romanScript.js -js containing all the javascript functions of the project
+1.romanCalculator.html - html file which will display roman calculator in the browser
+2.qunitTest.html - html file for performing the unit test of the function and containing test cases
+3.romanScript.js -js containing all the javascript functions of the project
 
 Execution
 ============================================================
