@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Roman Calculator</title>
+<!-- Link files which is used in the project !-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="romanScript.js"></script>  
+
+</head>
+<body>
+
+<h1 align="center">Roman Calculator</h1>
+
+<!--Input text for the textbox1 -->
+<input type ="text" id ="value1" class="form-control" placeholder = "Enter the first Roman Value"><br><br>
+
+<!--Input text for the textbox2 -->
+<input type ="text" id ="value2" class="form-control" placeholder = "Enter the second Roman Value"><br><br>
+
+<!--Input text for the buttons -->
+<div align="center">
+	<button type ="button" onclick ="add()" class="btn btn-primary">ADD</button>
+	<button type ="button" onclick ="subtract()"class="btn btn-primary">SUBTRACT</button>
+	<button type ="button" onclick ="multiply()" class="btn btn-primary">MULTIPLY</button>
+	<button type ="button" onclick ="divide()" class="btn btn-primary">DIVIDE</button><br><br>
+</div>
+
+<!--Final input text for the result -->
+<h3>Result:-</h3>
+<input type ="text" id ="value3" class="form-control">
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit Test</title>
+  
+  <!--Qunit.css cdn file -->
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.1.css">
+  <!--Qunit.js cdn file -->
+  <script src="https://code.jquery.com/qunit/qunit-2.4.1.js"></script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script>
+	
+	//function which takes two operands and operator as arguments
+	function romanConversion(value1,operator,value2)
+	{
+		//final result is stored in the result which will be returned 
+		var result = '';
+		
+		//character array of the roman value1 is created
+		romannum = value1.split('');
+		
+		//romanTest is called in order to obtained equivalent integer number
+		romanvalue1 = romanTest(romannum);
+
+		//character array of the roman value2 is created
+		romannum2 = value2.split('');
+		
+		//romanTest is called in order to obtained equivalent integer number
+		romanvalue2 = romanTest(romannum2);
+		
+		//switch operator in order to detemine final result as per the operator
+		switch(operator)
+		{
+		
+			case "+":
+				result =romanGenerator(romanvalue1 + romanvalue2);
+				break;
+			case "-":
+				result = romanGenerator(romanvalue1 - romanvalue2);
+				break;
+			case "*":
+				result = romanGenerator(romanvalue1 * romanvalue2);
+				break;
+			case "/":
+				result = romanGenerator(romanvalue1 / romanvalue2);
+				break;
+		}
+		
+		//final result  which is obtained
+		return result;
+	}
+	 
+    //wiill convert the roman number into the integer value romannumber is the list of roman characters		
+	function romanTest(romannumber)
+	{
+	  
+		//Equivalent integer value is pushed in these array
+		var romanarray = [];
+		
+		//first number of the romanarray
+		var firstnumber = 0;
+		
+		//second number of the roman array 
+		var secondnumber =0;
+		
+		//total obtained from the integer roman array which will be the output of the function
+		var total =0;
+		
+		//parsing of character roman array to create integer roman array
+		romannumber.forEach((item) =>
+		{
+			switch (item) 
+			{
+				case 'I':
+					romanarray.push(1);
+					break;
+				case 'V':
+					romanarray.push(5);
+					break;
+				case 'X':
+					romanarray.push(10);
+					break;
+				case 'L':
+					romanarray.push(50);
+					break;
+				case 'C':
+					romanarray.push(100);
+					break;
+				case 'D':
+					romanarray.push(500);
+					break;
+				case 'M':
+					romanarray.push(1000);
+					break;
+				case 'i':
+					romanarray.push(1);
+					break;
+				case 'v':
+					romanarray.push(5);
+					break;
+				case 'x':
+					romanarray.push(10);
+					break;
+				case 'l':
+					romanarray.push(50);
+					break;
+				case 'c':
+					romanarray.push(100);
+					break;
+				case 'd':
+					romanarray.push(500);
+					break;
+				case 'm':
+					romanarray.push(1000);
+					break;
+				default:
+			}
+		})
+		
+		//if the size is of length 1 then that element is directly returned
+		if (romanarray.length == 1)
+		{
+			total = romanarray[0];
+			return total;
+		}
+		
+		//first element of the romanarray
+		var firstnumber = romanarray.shift();
+		
+		//size of the roman array
+		var size = romanarray.length;
+		
+		//looping to create the equivalent integer number 
+		for (var i = 0; i < size+1; i++) 
+		{
+			secondnumber = romanarray.shift();
+			
+			//if first number is greater than second number
+			if ((firstnumber >= secondnumber) || secondnumber == undefined)
+			{
+				total += firstnumber;
+				firstnumber = secondnumber;
+			}
+			
+			//if second number is greater than first number
+			else 
+			{
+				total += (secondnumber - firstnumber);
+				if ((i + 2) == total && romanarray.length == 1)
+				{
+					firstnumber = romanarray.shift();
+					total += firstnumber;
+				}
+				if ((i + 2) < total) 
+				{
+					firstnumber = romanarray.shift();
+				}
+				i++;
+			}
+		}
+		
+		//total is returned
+		return (total);
+    }
+	
+	//function to generate roman number from the equivalent integer value
+	function romanGenerator(numeralvalue)
+	  {
+		  var romanvalues = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+		  var romanText=''
+		  for ( var i in romanvalues )
+		  {
+			while ( numeralvalue >= romanvalues[i] ) {
+			  romanText += i;
+			  numeralvalue -= romanvalues[i];
+			}
+		  }
+		  return romanText;
+	  }
+	
+	//Qunit test is performed in order to check weather result obtained is correct or not
+    QUnit.test( 'romanConversion()', function( assert ) {
+      assert.equal( romanConversion('XL','+','X'),'L',"We expect the same value" );
+	  assert.equal( romanConversion('C','-','I'),'XCIX',"We expect the same value" );
+	  assert.equal( romanConversion('C','/','X'),'X',"We expect the same value" );
+	  assert.equal( romanConversion('X','*','X'),'C',"We expect the same value" );
+    });
+  </script>
+</body>
+</html>
