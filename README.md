@@ -10,7 +10,7 @@ files
 
 Execution
 ============================================================
-1.clone the repo inside one folder
+1.clone the repo 
 2.run the romanCalculator.html in any browser and you will se the result of roman calculator
 3.run the qunitTest.html in any broswer and you will se the result of the passed test cases
 
